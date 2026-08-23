@@ -1,0 +1,21 @@
+{
+  "name": "inert-css",
+  "version": "0.1.0",
+  "description": "Finds CSS declarations that are present, valid, and can never take effect because another rule later in the cascade sets the same property.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Justin Rhee",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin-rhee/inert-css.git"
+  },
+  "keywords": ["css", "cascade", "dead-code", "static-analysis", "postcss", "linter"],
+  "main": "src/index.js",
+  "files": ["src", "README.md", "LICENSE", "SECURITY.md"],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "postcss": "^8.4.0"
+  }
+}
