@@ -1,0 +1,42 @@
+/* Bundled fixture for tests/run-on-real-stylesheet.mjs.
+ *
+ * Shapes, not a real product's stylesheet: each pair below reproduces the SHAPE of one of the
+ * three defects in tests/real-defects.test.mjs (a shorthand erasing a modifier declared earlier,
+ * a duplicated class re-imposing a layout value, two utility classes colliding) plus one ordinary
+ * modifier that is correctly allowed to win. Paired with tests/fixtures/markup/*.tsx so the numbers
+ * this script prints come from files this package ships, not from a hand-picked list of combos.
+ */
+
+.btn--danger {
+  border-color: color-mix(in srgb, var(--bad) 55%, transparent);
+  color: var(--bad);
+}
+
+.micro {
+  font-size: 0.578rem;
+  color: var(--ink-soft);
+}
+
+.setting-row__text {
+  min-width: 0;
+  flex: 1 1 0%;
+}
+
+.btn {
+  height: 38px;
+  border: 2px solid var(--line);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn--accent {
+  color: var(--accent);
+}
+
+.panel-item__text {
+  flex: 1 1 auto;
+}
+
+.muted {
+  color: var(--ink-2);
+}
