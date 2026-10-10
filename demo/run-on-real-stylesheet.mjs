@@ -3,7 +3,7 @@
  * collected from real-shaped markup, so the numbers it prints come from files this package ships
  * rather than from a hand-picked list of combos.
  *
- *   node tests/run-on-real-stylesheet.mjs [projectRoot]
+ *   node demo/run-on-real-stylesheet.mjs [projectRoot]
  *
  * With no argument it runs against the bundled fixture (tests/fixtures/). Point it at a project of
  * your own to run the same analysis there: it expects `<projectRoot>/globals.css` and a
@@ -16,13 +16,13 @@ import { dirname, join } from "node:path";
 import { analyze, collectCombos } from "../src/index.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const ROOT = process.argv[2] ?? join(HERE, "fixtures");
+const ROOT = process.argv[2] ?? join(HERE, "..", "tests", "fixtures");
 const CSS_FILE = join(ROOT, "globals.css");
 const MARKUP_DIR = join(ROOT, "markup");
 
 if (!existsSync(CSS_FILE) || !existsSync(MARKUP_DIR)) {
   console.error(`expected ${CSS_FILE} and ${MARKUP_DIR}/ to exist`);
-  console.error(`usage: node tests/run-on-real-stylesheet.mjs [projectRoot]`);
+  console.error(`usage: node demo/run-on-real-stylesheet.mjs [projectRoot]`);
   process.exit(1);
 }
 

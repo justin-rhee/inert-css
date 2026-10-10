@@ -27,7 +27,7 @@ It expands shorthands (`border` reaching `border-color`, `flex` reaching `flex-b
 
 The interesting case is equal specificity: a modifier written after its base is the ordinary, working case; a base rule that happens to sit after its modifier is the bug above. Telling them apart needs to know whether the two classes ever occur apart, not just how they are named, which is what the corpus is for: if every element wearing the narrower class also wears the wider one, the narrower one is a modifier and beating its base is the point. Losing to higher specificity and to a narrower rule you depend on report as `low`; losing at equal specificity purely on source order is `high`, the case authors do not expect.
 
-The line numbers in that example are real: they come from the fixture this package ships at `tests/fixtures/globals.css`. Run `node tests/run-on-real-stylesheet.mjs` to reproduce this exact finding, or `npm install && node --test tests/`, which asserts it; `tests/fixture.test.mjs` fails if this number ever drifts from what the fixture actually contains.
+The line numbers in that example are real: they come from the fixture this package ships at `tests/fixtures/globals.css`. Run `node demo/run-on-real-stylesheet.mjs` to reproduce this exact finding, or `npm install && node --test tests/`, which asserts it; `tests/fixture.test.mjs` fails if this number ever drifts from what the fixture actually contains.
 
 ### Where this sits next to what already exists
 
@@ -47,7 +47,7 @@ npm install postcss
 import { analyze, collectCombos } from "./index.js";
 ```
 
-Verify it by running `node tests/run-on-real-stylesheet.mjs` with no argument; the bundled fixture must come back with 9 high, 1 low findings. Node 22 or newer; the test suite runs on Node 22 in CI.
+Verify it by running `node demo/run-on-real-stylesheet.mjs` with no argument; the bundled fixture must come back with 9 high, 1 low findings. Node 22 or newer; the test suite runs on Node 22 in CI.
 
 ## What it won't do
 
@@ -63,12 +63,12 @@ Verify it by running `node tests/run-on-real-stylesheet.mjs` with no argument; t
 
 The suite is 25 tests on Node's built-in test runner. `tests/real-defects.test.mjs` covers the three shapes that produced this tool (a shorthand erasing a longhand, a duplicated class re-imposing a layout value, two utility classes colliding), the noise cases a checker must not flag (a working modifier, a `:hover` rule, identical values, separate media contexts, `!important`), the refusals (`@layer`, selectors needing DOM structure), and the corpus-confidence gate that withholds severity when the markup cannot be trusted. `tests/corpus.test.mjs` covers the markup reader directly: static `class`/`className` attributes double- and single-quoted, a literal `className={"a b"}` counted as static, a `clsx()` call counted as dynamic, and an unreadable path skipped without crashing. Run it: `npm install`, then `node --test tests/`.
 
-`tests/run-on-real-stylesheet.mjs` is a demonstration, not a test: it points the analyzer at a real-shaped stylesheet and markup tree but asserts nothing. An early draft shipped it that way, and gutting the markup reader entirely still left it printing a plausible "0 high, 0 low" at exit 0, exactly the failure a tool about silent, unenforced claims should not make. `tests/fixture.test.mjs` closes that gap by asserting the fixture's headline numbers, including the exact line the example cites, so that regression is now a red test rather than a quiet zero. Two mutations were used to check the suite can actually go red: gutting the markup reader turns 10 of the 25 tests red; removing the `border` shorthand's expansion turns 2 red. Both were reverted after the run.
+`demo/run-on-real-stylesheet.mjs` is a demonstration, not a test: it points the analyzer at a real-shaped stylesheet and markup tree but asserts nothing. An early draft shipped it that way, and gutting the markup reader entirely still left it printing a plausible "0 high, 0 low" at exit 0, exactly the failure a tool about silent, unenforced claims should not make. `tests/fixture.test.mjs` closes that gap by asserting the fixture's headline numbers, including the exact line the example cites, so that regression is now a red test rather than a quiet zero. Two mutations were used to check the suite can actually go red: gutting the markup reader turns 10 of the 25 tests red; removing the `border` shorthand's expansion turns 2 red. Both were reverted after the run.
 
 With no argument, the acid test runs against the bundled fixture:
 
 ```
-$ node tests/run-on-real-stylesheet.mjs
+$ node demo/run-on-real-stylesheet.mjs
 corpus: 4 class combinations from 4 files (1 of them unreadable: class names this tool cannot read statically)
 skipped 0 selectors needing DOM structure, 0 at-rule blocks
 findings: 9 high, 1 low

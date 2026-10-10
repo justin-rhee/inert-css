@@ -1,7 +1,7 @@
 /**
  * Regression coverage for the bundled acid-test fixture (tests/fixtures/).
  *
- * tests/run-on-real-stylesheet.mjs is a human-readable demonstration and asserts nothing about its
+ * demo/run-on-real-stylesheet.mjs is a human-readable demonstration and asserts nothing about its
  * own output. An independent review gutted src/corpus.js and the demonstration still printed a
  * plausible "findings: 0 high, 0 low" at exit 0, with the rest of the suite green. This file pins
  * the fixture's headline numbers, and the exact line number README.md quotes as a real finding, so

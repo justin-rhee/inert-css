@@ -11,7 +11,7 @@
     "tests/corpus.test.mjs",
     "tests/fixture.test.mjs",
     "tests/real-defects.test.mjs",
-    "tests/run-on-real-stylesheet.mjs",
+    "demo/run-on-real-stylesheet.mjs",
     "tests/fixtures/globals.css",
     "tests/fixtures/corpus/dynamic-one.tsx",
     "tests/fixtures/corpus/dynamic-three.tsx",
