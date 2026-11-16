@@ -1,5 +1,5 @@
 {
-  "name": "inert-css",
+  "name": "@justinrhee/inert-css",
   "version": "0.2.0",
   "type": "module",
   "description": "Finds CSS declarations that are present, valid, and can never take effect, by pairing a stylesheet with the class combinations that actually occur in your markup.",

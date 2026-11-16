@@ -1,6 +1,6 @@
 # inert-css
 
-[![tests](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml/badge.svg)](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml) [![npm](https://img.shields.io/npm/v/inert-css.svg)](https://www.npmjs.com/package/inert-css) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![node >= 22](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg) ![one dependency: postcss](https://img.shields.io/badge/dependencies-postcss-blue.svg)
+[![tests](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml/badge.svg)](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml) [![npm](https://img.shields.io/npm/v/@justinrhee/inert-css.svg)](https://www.npmjs.com/package/@justinrhee/inert-css) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![node >= 22](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg) ![one dependency: postcss](https://img.shields.io/badge/dependencies-postcss-blue.svg)
 
 Finds CSS that looks right in your stylesheet but never shows up on the page, because another rule quietly wins.
 
@@ -22,11 +22,11 @@ A base rule's `border` shorthand erased a modifier's `border-color`, and a butto
 ## Install
 
 ```bash
-npm install inert-css
+npm install @justinrhee/inert-css
 ```
 
 ```js
-import { analyze, collectCombos } from "inert-css";
+import { analyze, collectCombos } from "@justinrhee/inert-css";
 
 const findings = analyze({
   css: readFileSync("app/globals.css", "utf8"),
