@@ -1,6 +1,6 @@
 # inert-css
 
-[![tests](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml/badge.svg)](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![node >= 22](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg) ![one dependency: postcss](https://img.shields.io/badge/dependencies-postcss-blue.svg)
+[![tests](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml/badge.svg)](https://github.com/justin-rhee/inert-css/actions/workflows/test.yml) [![npm](https://img.shields.io/npm/v/inert-css.svg)](https://www.npmjs.com/package/inert-css) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![node >= 22](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg) ![one dependency: postcss](https://img.shields.io/badge/dependencies-postcss-blue.svg)
 
 Finds CSS that looks right in your stylesheet but never shows up on the page, because another rule quietly wins.
 
@@ -21,14 +21,12 @@ A base rule's `border` shorthand erased a modifier's `border-color`, and a butto
 
 ## Install
 
-It isn't on npm yet. Copy `src/index.js`, `src/cascade.js` and `src/corpus.js` into one folder, since they import each other, then:
-
 ```bash
-npm install postcss
+npm install inert-css
 ```
 
 ```js
-import { analyze, collectCombos } from "./index.js";
+import { analyze, collectCombos } from "inert-css";
 
 const findings = analyze({
   css: readFileSync("app/globals.css", "utf8"),
@@ -36,8 +34,7 @@ const findings = analyze({
 });
 ```
 
-Check it with the demo above: the bundled fixture must come back 9 high, 1 low. Node 22 or newer.
-
+Node 22 or newer, and one dependency, postcss. To check it, clone the repo and run the demo above: the bundled fixture must come back 9 high, 1 low.
 ## How it works
 
 1. you give it a stylesheet and the class combinations that occur together on real elements, or `collectCombos` reads them from your markup

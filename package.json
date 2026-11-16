@@ -1,10 +1,12 @@
 {
   "name": "inert-css",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Finds CSS declarations that are present, valid, and can never take effect, by pairing a stylesheet with the class combinations that actually occur in your markup.",
   "main": "src/index.js",
-  "exports": { ".": "./src/index.js" },
+  "exports": {
+    ".": "./src/index.js"
+  },
   "files": [
     "src",
     "SECURITY.md",
@@ -24,13 +26,31 @@
     "tests/fixtures/markup/label.tsx",
     "tests/fixtures/markup/settings-row.tsx"
   ],
-  "scripts": { "test": "node --test tests/" },
-  "keywords": ["css", "postcss", "static-analysis", "cascade", "lint"],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "css",
+    "postcss",
+    "static-analysis",
+    "cascade",
+    "lint"
+  ],
   "author": "Justin Rhee",
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/justin-rhee/inert-css.git" },
-  "bugs": { "url": "https://github.com/justin-rhee/inert-css/issues" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin-rhee/inert-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/justin-rhee/inert-css/issues"
+  },
   "homepage": "https://github.com/justin-rhee/inert-css#readme",
-  "engines": { "node": ">=22" },
-  "dependencies": { "postcss": "^8.4.0" }
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "postcss": "^8.4.0"
+  }
 }
